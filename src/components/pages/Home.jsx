@@ -15,7 +15,7 @@ const Home = () => {
     }, []);
 
     if (loading) return <p className='text-center'>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
+    if (error) return <p className='text-center'>Error: {error}</p>;
 
     return (
         <div>
