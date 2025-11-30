@@ -10,6 +10,7 @@ import Login from './components/pages/Login.jsx';
 import Register from './components/pages/Register.jsx';
 import { Toaster } from 'react-hot-toast';
 import AuthProvider from './components/Firebase/AuthProvider.jsx';
+import NotFound from './components/pages/NotFound.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,9 @@ const router = createBrowserRouter([
       {path:'/login', Component: Login},
       {path:'/register', Component: Register},
     ]
+  },
+  {
+    path: "*", Component: NotFound
   }
 ]);
 
