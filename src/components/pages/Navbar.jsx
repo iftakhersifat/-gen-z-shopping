@@ -1,53 +1,74 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React, { use } from 'react';
+import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../Firebase/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
-    const links =<>
-    <Link to='/'>Home</Link>
-    <Link to='/Products'>Products</Link>
-    </>
-    const moreLinks =<>
-    <Link to='/About'>About</Link>
-    <Link to='/Contact'>Contact</Link>
-    </>
+  // for user check
+ const {user, logOut}=use(AuthContext);
+
+//  logout handel
+const handleLogOut =() =>{
+  logOut()
+  .then(()=>toast.success('Logout successfully!'))
+  .catch((error)=>toast.error(error.message || "Log out failed"))
+}
+
+  const links = <>
+  <li><NavLink to="/" className={({isActive})=> isActive ? 'text-blue-600 font-medium underline' : 'hover:text-violet-500 font-medium transition'}>Home</NavLink></li>
+  </>
+
+  const moreLinks = <>
+  <li><NavLink to="/about" className={({isActive})=> isActive ? 'text-blue-600 font-medium underline' : 'hover:text-violet-500 font-medium transition'}>About</NavLink></li>
+  <li><NavLink to="/contact" className={({isActive})=> isActive ? 'text-blue-600 font-medium underline' : 'hover:text-violet-500 font-medium transition'}>Contact</NavLink></li>
+  </>
+
+
     return (
         <div className="shadow-md sticky top-0 z-50 bg-white">
             <div className="navbar max-w-6xl mx-auto px-6 md:px-6 lg:px-0">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" /> </svg>
       </div>
       <ul
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
         {links}
         <li>
-          <a>More</a>
+          <a className='font-medium'>More</a>
           <ul className="p-2">
             {moreLinks}
           </ul>
         </li>
-        
+
       </ul>
     </div>
-    <h1 className="btn btn-ghost text-xl">Gen-Z Shopping</h1>
+    {/* logo */}
+    <Link to="/"><h1>Gen-Z Shopping</h1></Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
       {links}
       <li>
         <details>
-          <summary>Parent</summary>
-          <ul className="p-2 bg-base-100 w-40 z-1">
+          <summary className='font-medium'>More</summary>
+          <ul className="p-2">
             {moreLinks}
           </ul>
         </details>
       </li>
+      
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Login</a>
+    {user? <>
+    <button onClick={handleLogOut} className='btn bg-linear-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 shadow-md hover:shadow-lg text-white px-4 py-1 rounded-xl font-medium hover:bg-red-600 transition'>Log Out</button></> : <>
+    
+    <NavLink className="bg-linear-to-r from-blue-500 to-indigo-600 shadow-lg hover:shadow-xl text-white px-4 py-1 rounded-lg font-medium hover:bg-blue-700" to="/login">Login</NavLink>
+    
+    </>}
   </div>
 </div>
         </div>
