@@ -4,12 +4,17 @@ import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
+import Root from './components/pages/Root.jsx';
+import Home from './components/pages/Home.jsx';
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <div>Hello World</div>,
-  },
+    path:'/',
+    Component: Root,
+    children:[
+      {index: true, Component:Home},
+    ]
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(
