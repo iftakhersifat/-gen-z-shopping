@@ -11,6 +11,7 @@ import Register from './components/pages/Register.jsx';
 import { Toaster } from 'react-hot-toast';
 import AuthProvider from './components/Firebase/AuthProvider.jsx';
 import NotFound from './components/pages/NotFound.jsx';
+import Details from './components/pages/Details.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       {index: true, Component:Home},
       {path:'/login', Component: Login},
       {path:'/register', Component: Register},
+      {path:'/products/:id', Component: Details},
     ]
   },
   {
