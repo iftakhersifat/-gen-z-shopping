@@ -15,7 +15,7 @@ export default function Details() {
       .finally(() => setLoading(false));
   }, [id]);
 
-  if (loading) return <p className='text-center mt-24 text-lg'>Loading...</p>;
+  if (loading) return <p className='text-center mt-24 text-lg'><span className="loading loading-spinner text-primary loading-xl"></span></p>;
   if (!product) return <p className='text-center mt-24 text-lg'>Product not found</p>;
 
   return (

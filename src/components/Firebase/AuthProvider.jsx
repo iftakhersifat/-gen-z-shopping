@@ -1,13 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { 
-  createUserWithEmailAndPassword, 
-  GoogleAuthProvider, 
-  onAuthStateChanged, 
-  signInWithEmailAndPassword, 
-  signInWithPopup, 
-  signOut, 
-  updateProfile 
-} from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from 'firebase/auth';
 import { auth } from './Firebase';
 
 export const AuthContext = createContext(null);
@@ -18,7 +10,7 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [orders, setOrders] = useState([]);
 
-  // Load orders from localStorage safely
+  // load orders
   useEffect(() => {
     const savedOrders = JSON.parse(localStorage.getItem('orders') || '[]');
     const fixedOrders = savedOrders.map(o => ({
@@ -33,7 +25,7 @@ const AuthProvider = ({ children }) => {
     localStorage.setItem('orders', JSON.stringify(fixedOrders));
   }, []);
 
-  // Firebase Auth state
+  // auth state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser);
@@ -42,25 +34,25 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  // Register user
+  // user create
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  // Login user
+  // user login
   const userLogin = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  // Login with Google
+  // google login
   const registerWithGoogle = () => {
     setLoading(true);
     return signInWithPopup(auth, provider);
   };
 
-  // Logout
+  // logout
   const logOut = () => signOut(auth);
 
   // Update profile
@@ -71,7 +63,7 @@ const AuthProvider = ({ children }) => {
       .catch(err => console.error(err));
   };
 
-  // Add order
+  // for add order
   const addOrder = order => {
     setOrders(prev => {
       const newOrder = { ...order, id: order.id.toString() };
@@ -80,7 +72,7 @@ const AuthProvider = ({ children }) => {
       return updatedOrders;
     });
   };
-  // Add inside AuthProvider, below addOrder
+  // for remove order
 const removeOrder = (orderId) => {
   setOrders(prev => {
     const updatedOrders = prev.filter(o => o.id !== orderId);
