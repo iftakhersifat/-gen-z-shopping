@@ -30,6 +30,7 @@ const Login = () => {
             navigate(from)
         }).catch(error=>{
             toast.error(error.message || "Login failed", { duration: 4000 });
+            console.error(error);
         })
     }
     return (
@@ -54,9 +55,10 @@ const Login = () => {
           </div>
 
           <div><a className="link link-hover">Forgot password?</a></div>
+          <button className="btn btn-neutral mt-4 text-white bg-blue-500 hover:bg-blue-700 border-0">Login</button>
 
           <SocialLogin from={from}></SocialLogin>
-          <button className="btn btn-neutral mt-4 text-white bg-blue-500 hover:bg-blue-700 border-0">Login</button>
+          
           
           <div className="text-center text-sm mt-3 text-gray-600">
             <Link to="/register" className='mt-3'>Don't have an account? <span className='text-red-500 underline'>Register</span></Link>

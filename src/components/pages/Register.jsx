@@ -85,10 +85,11 @@ const Register = () => {
             {error && <p className="text-red-500 dark:text-red-400 text-sm">{error}</p>}
           </div>
           <div><a className="link link-hover">Forgot password?</a></div>
+          <button className="btn btn-neutral mt-4 text-white bg-blue-500 hover:bg-blue-700 border-0">Register</button>
 
           {/* register with gmail */}
           <SocialRegister from={from}></SocialRegister>
-          <button className="btn btn-neutral mt-4 text-white bg-blue-500 hover:bg-blue-700 border-0">Register</button>
+          
           
           <div className="text-center text-sm mt-3 text-gray-600">
             <Link to="/login" className='mt-3'>Do you have an account? <span className='text-red-500 underline'>Login</span></Link>

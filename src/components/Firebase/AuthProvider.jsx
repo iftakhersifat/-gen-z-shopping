@@ -1,9 +1,12 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from 'firebase/auth';
+import { createUserWithEmailAndPassword, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from 'firebase/auth';
 import { auth } from './Firebase';
 
 export const AuthContext = createContext(null);
+// for google reg or login
 const provider = new GoogleAuthProvider();
+// for github reg or login
+const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -51,6 +54,12 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithPopup(auth, provider);
   };
+  // GitHub login
+  const registerWithGithub = () => {
+    setLoading(true);
+    return signInWithPopup(auth, githubProvider);
+  };
+
 
   // logout
   const logOut = () => signOut(auth);
@@ -91,6 +100,7 @@ const removeOrder = (orderId) => {
     createUser,
     userLogin,
     registerWithGoogle,
+    registerWithGithub,
     logOut,
     updateUserProfile
   };
