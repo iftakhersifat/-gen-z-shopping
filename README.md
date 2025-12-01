@@ -1,16 +1,57 @@
-# React + Vite
+# Gen-Z Shopping 🛒
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Gen-Z Shopping** is a modern, responsive e-commerce platform built with **React**, **TailwindCSS**, and **Firebase**. It allows users to browse trending products, view details, manage orders, and authenticate via Email/Password, Google, or GitHub.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+### User Interface
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Fully **responsive design** (mobile & desktop)
+- Clean and modern UI using **TailwindCSS** and **DaisyUI**
+- Reusable components: `Navbar`, `Footer`, `ProductCard`, `OrderCard`, etc.
+- Use of **React Hooks**: `useState`, `useEffect`, `useContext`
 
-## Expanding the ESLint configuration
+### Routing
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Implemented with **React Router**
+- **Dynamic Routes** for product details and orders
+- Protected **Dashboard** route (Private Route)
+- 404 Not Found page
+- URL-based navigation with parameters
+
+### Product & Order Pages
+
+- Browse trending products on **Home**
+- **Dynamic Product Details Page** with image, title, price, description
+- **Orders Page** showing all user orders
+- Cancel or view details of orders dynamically
+
+### Authentication (Firebase)
+
+- **Email & Password Authentication**: Register, Login, Logout
+- **Google Authentication**
+- **GitHub Authentication**
+- Store user info in **React Context**
+- Display user profile after login (Name, Email, Photo)
+
+### Authorization & Security
+
+- Only logged-in users can access protected routes
+- Redirect unauthenticated users to **Login** page
+- Maintain authentication state across pages with Firebase
+
+---
+
+## 🛠 Tech Stack
+
+| Feature        | Technology                                |
+| -------------- | ----------------------------------------- |
+| Frontend       | React, TailwindCSS, DaisyUI               |
+| Routing        | React Router                              |
+| Authentication | Firebase (Email/Password, Google, GitHub) |
+| Notifications  | react-hot-toast                           |
+| Icons          | react-icons                               |
+
+---
