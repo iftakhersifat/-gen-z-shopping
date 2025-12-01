@@ -19,7 +19,7 @@ const handleLogOut =() =>{
   {
     user && <>
     <li><NavLink to="/dashboard" className={({isActive})=> isActive ? 'text-blue-600 font-medium underline' : 'hover:text-violet-500 font-medium transition'}>Dashboard</NavLink></li> 
-    <li><NavLink to="/orderList" className={({isActive})=> isActive ? 'text-blue-600 font-medium underline' : 'hover:text-violet-500 font-medium transition'}>order list</NavLink></li> 
+    <li><NavLink to="/orderList" className={({isActive})=> isActive ? 'text-blue-600 font-medium underline' : 'hover:text-violet-500 font-medium transition'}>Order List</NavLink></li> 
 
     </>
   }

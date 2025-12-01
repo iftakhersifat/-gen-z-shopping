@@ -14,7 +14,7 @@ const Home = () => {
             .finally(() => setLoading(false));
     }, []);
 
-    if (loading) return <p className='text-center'>Loading...</p>;
+    if (loading) return <p className='text-center mt-24 text-lg'><span className="loading loading-spinner text-primary loading-xl"></span></p>;
     if (error) return <p className='text-center'>Error: {error}</p>;
 
     return (
